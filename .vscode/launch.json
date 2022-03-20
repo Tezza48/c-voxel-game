@@ -5,13 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "msbuild c-voxel-game-game",
+            "name": "(Windows) Launch",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "msbuild",
+            "program": "${workspaceRoot}\\bin\\Debug_x64\\c-voxel-game-game.exe",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${workspaceRoot}\\c-voxel-game-game",
+            "cwd": "${fileDirname}",
             "environment": [],
             "console": "integratedTerminal"
         }

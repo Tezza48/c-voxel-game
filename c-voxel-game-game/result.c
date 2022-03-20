@@ -14,7 +14,16 @@ Result result_make_error(const char* error) {
 Result result_make_ok(void* value_ptr) {
     Result result = {
         .is_error = 0,
-        .value = value_ptr,
+        .ptr = value_ptr,
+    };
+
+    return result;
+}
+
+Result result_make_ok_int32(int32_t value) {
+    Result result = {
+        .is_error = 0,
+        .int32 = value,
     };
 
     return result;
@@ -27,5 +36,15 @@ void* result_unwrap_internal(Result* result, const char* file, int line) {
         exit(-1);
     }
 
-    return result->value;
+    return result->ptr;
+}
+
+int32_t result_unwrap_internal_int32(Result* result, const char* file, int line) {
+    if (result->is_error) {
+        printf("ERROR: result_unwrap | %s:%d | %s\n", file, line, result->error);
+
+        exit(-1);
+    }
+
+    return result->int32;
 }

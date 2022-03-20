@@ -1,12 +1,14 @@
 #include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
 
 #include <GL/glew.h>
 
 #include <GLFW/glfw3.h>
-#include <stdint.h>
-#include <stdlib.h>
 
 #include "result.h"
+#include "assets.h"
 
 typedef struct Window {
     GLFWwindow* glfw_window;
@@ -51,9 +53,9 @@ void window_destroy(Window* window) {
     free(window);
 }
 
-void window_swap_bffers(Window* window) {
-    glfwSwapBuffers(window->glfw_window);
-}
+// void window_swap_bffers(Window* window) {
+//     glfwSwapBuffers(window->glfw_window);
+// }
 
 int main(void) {
     Result window_result = window_create_ptr();
@@ -66,13 +68,37 @@ int main(void) {
         exit(-1);
     }
 
+    glCullFace(GL_FALSE);
+
+    // Loading test shaders for displaying a triangle on screen.
+    GLint program = glCreateProgram();
+    Result vertex_shader_result = assets_load_gl_shader(
+        "assets/shader/shader_test_triangle_vertex.glsl",
+        GL_VERTEX_SHADER
+    );
+    GLint vertex_shader = result_unwrap_int32(&vertex_shader_result);
+
+    Result fragment_shader_result = assets_load_gl_shader(
+        "assets/shader/shader_test_triangle_fragment.glsl",
+        GL_FRAGMENT_SHADER
+    );
+    GLint fragment_shader = result_unwrap_int32(&fragment_shader_result);
+
+    glAttachShader(program, vertex_shader);
+    glAttachShader(program, fragment_shader);
+    glLinkProgram(program);
+
+    glClearColor(0.39f, 0.58f, 0.92f, 1.0f);
+
     while (!window_should_window_close(window)) {
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        // game loop logic
+        glUseProgram(program);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        glfwSwapBuffers(window->glfw_window);
         glfwPollEvents();
-
-        glClearColor(0.39f, 0.58f, 0.92f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-        window_swap_bffers(window);
     }
 
     window_destroy(window);

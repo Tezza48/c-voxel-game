@@ -1,6 +1,9 @@
 {
     "files.associations": {
         "glew.h": "c",
-        "*.rh": "c"
+        "*.rh": "c",
+        "xlocale": "c",
+        "assets.h": "c",
+        "result.h": "c"
     }
 }

@@ -18,12 +18,12 @@
     <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="result.c">
+    <ClCompile Include="assets.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="result.h">
+    <ClInclude Include="assets.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

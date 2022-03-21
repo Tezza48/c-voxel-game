@@ -1,16 +1,17 @@
-#include "assets.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "assets.h"
 
-Result assets_load_gl_shader(const char* path, GLenum type) {
+ASSETS_RESULT assets_load_gl_shader(const char* path, GLenum type, GLuint* out_shader) {
     GLint shader;
 
     {
         FILE* shader_file_ptr;
         errno_t error = fopen_s(&shader_file_ptr, path, "r");
         if (error) {
-            fclose(shader_file_ptr);
-            return result_make_error("Failed to open file");
+            if (shader_file_ptr) fclose(shader_file_ptr);
+
+            return ASSETS_RESULT_ERROR_FILE_OPEN;
         }
 
         // allocate a buffer for the file contents
@@ -23,7 +24,7 @@ Result assets_load_gl_shader(const char* path, GLenum type) {
         // TODO WT: Check for errors when reading the file.
 
         if (fclose(shader_file_ptr) != 0) {
-            return result_make_error("File did not close properly");
+            return ASSETS_RESULT_ERROR_FILE_CLOSE;
         }
 
         // File successfully read into buffer, now we can create the shader.
@@ -49,8 +50,10 @@ Result assets_load_gl_shader(const char* path, GLenum type) {
         free(error_buffer_ptr);
         glDeleteShader(shader);
 
-        return result_make_error("Failed to compile shader");
+        return ASSETS_RESULT_ERROR_COMPILATION;
     }
 
-    return result_make_ok_int32(shader);
+    *out_shader = shader;
+
+    return ASSETS_RESULT_OK;
 }

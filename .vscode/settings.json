@@ -4,6 +4,7 @@
         "*.rh": "c",
         "xlocale": "c",
         "assets.h": "c",
-        "result.h": "c"
+        "result.h": "c",
+        "xiosbase": "cpp"
     }
 }

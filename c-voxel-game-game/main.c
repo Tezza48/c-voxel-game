@@ -9,7 +9,8 @@
 
 #include "assets.h"
 
-typedef struct result_uint32_t result_uint32_t;
+#define RESULT_IMPL
+#include "result.h"
 
 typedef struct window_info
 {

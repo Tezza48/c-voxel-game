@@ -5,6 +5,7 @@
         "xlocale": "c",
         "assets.h": "c",
         "result.h": "c",
-        "xiosbase": "cpp"
+        "xiosbase": "cpp",
+        "glfw3.h": "c"
     }
 }

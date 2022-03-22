@@ -161,9 +161,13 @@
   <ItemGroup>
     <ClCompile Include="main.c" />
     <ClCompile Include="assets.c" />
+    <ClCompile Include="result.c" />
+    <ClCompile Include="application.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="assets.h" />
+    <ClInclude Include="result.h" />
+    <ClInclude Include="application.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

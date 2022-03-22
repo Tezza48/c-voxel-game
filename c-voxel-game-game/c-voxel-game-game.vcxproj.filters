@@ -21,9 +21,15 @@
     <ClCompile Include="assets.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="result.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="assets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="result.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

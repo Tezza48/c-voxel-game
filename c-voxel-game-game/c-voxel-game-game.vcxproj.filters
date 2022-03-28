@@ -21,7 +21,10 @@
     <ClCompile Include="assets.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="result.c">
+    <ClCompile Include="app.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="renderer.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,7 +32,10 @@
     <ClInclude Include="assets.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="result.h">
+    <ClInclude Include="app.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
